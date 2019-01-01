@@ -1,0 +1,6 @@
+.idea/
+build/
+Gemfile.lock
+consul/
+consul-dash-doc-generator.iml
+consul-website/
