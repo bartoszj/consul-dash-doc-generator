@@ -26,15 +26,15 @@ git fetch --all --prune
 git checkout -- .
 git checkout "v${TAG}"
 
-# # Install gems
-# cd "${WEBSITE_PATH}"
-# bundle install
+# Install gems
+cd "${WEBSITE_PATH}"
+bundle install
 
-# rm Rakefile || true
-# # cp "${CWD}/Rakefile" .
-# ln -s "${CWD}/Rakefile" || true
+rm Rakefile || true
+# cp "${CWD}/Rakefile" .
+ln -s "${CWD}/Rakefile" || true
 
-# # Build
-# rake
+# Build
+rake
 
-# mv Consul.tgz "${BUILD_PATH}"
+mv Consul.tgz "${BUILD_PATH}"

@@ -1,6 +1,6 @@
 require "nokogiri"
 require "erb"
-require 'sqlite3'
+require "sqlite3"
 
 class Index
   attr_accessor :db
@@ -167,71 +167,81 @@ task :create_index do
   index.reset
 
   Dir.chdir("Consul.docset/Contents/Resources/Documents") do
-    # consul-on-cicd
-    Dir.glob("guides/consul-on-cicd/**/*")
-      .find_all{ |f| File.stat(f).file? }.each do |path|
-
-      index.insert "Guide", path
-    end
     # getting-started
     Dir.glob("intro/getting-started/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
+      if path.match(/\.html$/)
+        index.insert "Guide", path
+      end
+    end
+    # vs
+    Dir.glob("intro/vs/**/*")
+      .find_all{ |f| File.stat(f).file? }.each do |path|
+
+      if path.match(/\.html$/)
+        index.insert "Guide", path
+      end
+    end
+    # docs
+    Dir.glob("docs/*")
+      .find_all{ |f| File.stat(f).file? }.each do |path|
+
       index.insert "Guide", path
     end
-    # basics
-    Dir.glob("docs/basics/**/*")
+    # docs/agent
+    Dir.glob("docs/agent/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
-      index.insert "Word", path
+      index.insert "Attribute", path
     end
-    # builders
-    Dir.glob("docs/builders/**/*")
-      .find_all{ |f| File.stat(f).file? }.each do |path|
-
-      index.insert "Builtin", path
-    end
-    # commands
+    # docs/commands
     Dir.glob("docs/commands/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
       index.insert "Command", path
     end
-    # extending
-    Dir.glob("docs/extending/**/*")
+    # docs/connect
+    Dir.glob("docs/connect/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
-      index.insert "Extension", path
+      index.insert "Callback", path
     end
-    # install
+    # docs/enterprise
+    Dir.glob("docs/enterprise/**/*")
+      .find_all{ |f| File.stat(f).file? }.each do |path|
+
+      index.insert "Environment", path
+    end
+    # docs/guides
+    Dir.glob("docs/guides/**/*")
+      .find_all{ |f| File.stat(f).file? }.each do |path|
+
+      index.insert "Guide", path
+    end
+    # docs/install
     Dir.glob("docs/install/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
       index.insert "Instruction", path
     end
-    # other
-    Dir.glob("docs/other/**/*")
+    # docs/internals
+    Dir.glob("docs/internals/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
-      index.insert "Mixin", path
+      index.insert "Instance", path
     end
-    # post-processors
-    Dir.glob("docs/post-processors/**/*")
+    # docs/platform
+    Dir.glob("docs/platform/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
-      index.insert "Procedure", path
+      index.insert "Package", path
     end
-    # provisioners
-    Dir.glob("docs/provisioners/**/*")
+    # api
+    Dir.glob("api/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
-      index.insert "Provisioner", path
-    end
-    # templates
-    Dir.glob("docs/templates/**/*")
-      .find_all{ |f| File.stat(f).file? }.each do |path|
-
-      index.insert "Macro", path
+      index.insert "Define", path
     end
   end
 end

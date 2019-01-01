@@ -1,12 +1,12 @@
 Consul Dash Docs Generator
 ==========================
 
-This projects essence has been taken from [https://github.com/rolandjohann/terraform-dash-doc-generator](https://github.com/rolandjohann/terraform-dash-doc-generator) and updated to generate Packer docs.
+This projects is based on [packer-dash-doc-generator](https://github.com/bartoszj/packer-dash-doc-generator).
 
 ### Installation
 
 ```bash
-rbenv install 2.6.0
+rbenv install 2.5.3
 gem install -N bundler
 bundle install
 ```
