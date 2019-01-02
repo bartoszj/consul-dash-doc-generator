@@ -118,6 +118,7 @@ task :copy do
       doc = Nokogiri::HTML(File.open(source).read)
 
       doc.title = doc.title.sub(" - Consul by HashiCorp", "")
+      doc.title = doc.title.sub(" - HTTP API", "")
 
       doc.xpath("//a[contains(@class, 'anchor')]").each do |e|
         a = Nokogiri::XML::Node.new "a", doc
@@ -193,7 +194,7 @@ task :create_index do
     Dir.glob("docs/agent/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
-      index.insert "Attribute", path
+      index.insert "Setting", path
     end
     # docs/commands
     Dir.glob("docs/commands/**/*")
@@ -205,7 +206,7 @@ task :create_index do
     Dir.glob("docs/connect/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
-      index.insert "Callback", path
+      index.insert "Setting", path
     end
     # docs/enterprise
     Dir.glob("docs/enterprise/**/*")
@@ -229,13 +230,13 @@ task :create_index do
     Dir.glob("docs/internals/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
-      index.insert "Instance", path
+      index.insert "Instruction", path
     end
     # docs/platform
     Dir.glob("docs/platform/**/*")
       .find_all{ |f| File.stat(f).file? }.each do |path|
 
-      index.insert "Package", path
+      index.insert "Setting", path
     end
     # api
     Dir.glob("api/**/*")
