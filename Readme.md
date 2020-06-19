@@ -20,3 +20,11 @@ To build execute command:
 ```
 
 Then move the docset into a proper directory.
+
+### Hints
+
+- Uncomment `sed` line in Rakefile:
+
+    ```
+    sh "sed -i '' 's|npm run static\$|bash -c \"npm install; npm run static\"|g' Makefile"
+    ```
