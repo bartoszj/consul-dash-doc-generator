@@ -156,7 +156,7 @@ task :copy do
 
       doc.xpath("//div[contains(@class, 'g-container')]").each do |e|
         e["class"] = nil
-        e["style"] = "margin-top: 30px; margin-left: 30px; margin-right: 30px;"
+        e["style"] = "margin-left: 30px; margin-right: 30px;"
       end
 
       File.open(target, "w") { |f| f.write doc }
