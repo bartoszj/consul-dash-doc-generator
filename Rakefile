@@ -138,6 +138,9 @@ task :copy do
       doc.xpath("//div[contains(@class, 'g-mega-nav')]").each do |e|
         e.remove
       end
+      doc.xpath("//div[contains(@class, 'g-search')]").each do |e|
+        e.remove
+      end
       doc.xpath("//nav").each do |e|
         e.remove
       end
