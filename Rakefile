@@ -100,6 +100,8 @@ task :copy do
     target = "Consul.docset/Contents/Resources/Documents/#{path}"
 
     case
+    when source.match(/\/_next\/data/)
+      next
     when File.stat(source).directory?
       mkdir_p target
     when source.match(/\.gz$/)
