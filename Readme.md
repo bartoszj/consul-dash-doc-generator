@@ -6,8 +6,7 @@ This projects is based on [packer-dash-doc-generator](https://github.com/bartosz
 ### Installation
 
 ```bash
-rbenv install 2.5.3
-gem install -N bundler
+rbenv install 2.7.3
 bundle install
 ```
 
